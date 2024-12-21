@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Unequal Grid</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #e0e0e0;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .span-two-columns {
+            grid-column: span 2;
+        }
+
+        .span-two-rows {
+            grid-row: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="grid" class="grid-container"></div>
+
+    <script>
+        const grid = document.getElementById("grid");
+
+        // Create 6 items with dynamic spans
+        for (let i = 1; i <= 6; i++) {
+            const item = document.createElement("div");
+            item.classList.add("grid-item");
+
+            item.innerText = "Item " + i;
+
+            // Randomly assign classes for span behavior
+            if (Math.random() > 0.5) {
+                item.classList.add("span-two-columns");
+            }
+            if (Math.random() > 0.5) {
+                item.classList.add("span-two-rows");
+            }
+
+            grid.appendChild(item);
+        }
+    </script>
+</body>
+</html>
